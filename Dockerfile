@@ -10,6 +10,7 @@ RUN apt-get update && \
 RUN apt-get install -y gcc && \
     apt-get install -y g++
 
+RUN apt-get install -y libjpeg-dev zlib1g-dev
 
 RUN apt-get update && apt-get install -y python3.6 python3-distutils python3-pip python3-apt
 
@@ -18,15 +19,25 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.4/cmake-3.20.4
       && chmod u+x /tmp/cmake-install.sh \
       && mkdir /usr/bin/cmake \
       && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
-       && rm /tmp/cmake-install.sh
+      && rm /tmp/cmake-install.sh
 
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 ENV CC=/usr/bin/gcc \
     CXX=/usr/bin/g++
 
-WORKDIR $HOME/app/pydraco
-RUN mkdir ./library
 
+WORKDIR $HOME/app
+RUN mkdir ./library
+RUN pip3 install -r requirements.txt
+
+WORKDIR $HOME/app/pydraco/draco
+RUN mkdir build_dir && \
+    cd build_dir &&\
+    cmake ../ &&\
+    make &&\
+    make install
+
+WORKDIR $HOME/app/pydraco
 RUN set -ex \
-    python3 setup.py build \
+    python3 setup.py build &&\
     python3 setup.py install 
