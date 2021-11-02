@@ -5,7 +5,8 @@ COPY . /app
 RUN apt-get update && \
     apt-get install -y sudo && \
     apt-get install build-essential -y && \
-    apt-get install -y wget
+    apt-get install -y wget && \
+    apt-get install -y nano
 
 RUN apt-get install -y gcc && \
     apt-get install -y g++
