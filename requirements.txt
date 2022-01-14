@@ -1,3 +1,8 @@
 Pillow
 numpy
 scipy
+scikit-build
+opencv-python
+opencv-python-headless
+matplotlib
+open3d
