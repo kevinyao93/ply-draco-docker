@@ -22,6 +22,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     ffmpeg \
     libsm6 \
+    libgl1 \
+    libgomp1 \
     libxext6
 
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.4/cmake-3.20.4-Linux-x86_64.sh \

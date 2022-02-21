@@ -11,6 +11,8 @@ services:
     command: /bin/bash
 
     volumes:
-      - ./pydraco/testdata_files:/app/pydraco/testdata_files
+      - ./data:/app/data
       - ./plySampler:/app/plySampler
       - ./pydraco/src:/app/pydraco/src
+    
+    
