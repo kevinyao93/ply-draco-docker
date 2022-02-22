@@ -9,7 +9,8 @@ services:
     
     tty: true
     command: /bin/bash
-
+    ports:
+      - "12468:12468"
     volumes:
       - ./data:/app/data
       - ./plySampler:/app/plySampler
