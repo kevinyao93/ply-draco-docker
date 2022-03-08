@@ -4,12 +4,12 @@ import os
 import subprocess
 import sys
 
-sys.path.insert(0, '../../plySampler')
+sys.path.insert(0, '../plySampler')
 import drc_to_ply
 import encode_buffer
 
 #testdata_directory = "./longdress_vox10/"
-testdata_directory="./subsampled/"
+testdata_directory="./subsampled_50000/"
 output_directory = "./drc_files/"
 
 print(pydraco.add(1, 2))
@@ -18,7 +18,7 @@ def encode_decode_ply_file():
     file_l = []
     start = time.time()
     for i in range(1053, 1154):
-        file_l.append(bytes(encode_buffer.encode_ply(file_path=testdata_directory + str(i)+'_SUBSAMPLED.ply').buffer))
+        file_l.append(bytes(encode_buffer.encode_ply(file_path=testdata_directory + str(i)).buffer))
     file_load_time = time.time()
     print("Time to load and encode files: ", (file_load_time - start))
 
