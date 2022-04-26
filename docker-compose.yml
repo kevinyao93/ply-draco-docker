@@ -16,4 +16,3 @@ services:
       - ./plySampler:/app/plySampler
       - ./pydraco/src:/app/pydraco/src
     
-    
