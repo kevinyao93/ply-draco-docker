@@ -15,6 +15,7 @@ function create_subset() {
     for file in *; do mv "${file}" "${file/_SUBSAMPLED/}"; done
     cd ../
 }
+cd ../data
 
 if [ ! -d "longdress_10000" ]
 then
@@ -60,3 +61,4 @@ if [ ! -d "soldier_50000" ]
 then
     create_subset soldier 50000
 fi
+
